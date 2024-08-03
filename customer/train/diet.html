@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Power Gym</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/responsive.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navbar Start -->
+        <div class="container-fluid bg-primary">
+            <div class="container">
+                <nav class="navbar navbar-dark navbar-expand-lg py-0">
+                    <a href="index.html" class="navbar-brand">
+                        <h1 class="text-white fw-bold d-block">Power Gym</span> </h1>
+                    </a>
+                    <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse bg-transparent" id="navbarCollapse">
+                        <div class="navbar-nav ms-auto mx-xl-auto p-0">
+                            <a href="index.html" class="nav-item nav-link active text-secondary">Home</a>
+                            <a href="service.html" class="nav-item nav-link">Services</a>
+                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="../index.php" class="nav-item nav-link">Logout</a>
+                        </div>
+                    </div>
+                    
+                </nav>
+            </div>
+        </div>
+        <!-- Navbar End -->
+
+        
+       
+
+
+       
+        <section class="diet">
+        <form id="form1">
+            <label for="male">Male</label>
+            <input type="radio" id="male" name="gender" value="male" checked><br><br>
+            <label for="female">Female</label>
+            <input type="radio" id="female" name="gender" value="female"><br><br>
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" required min="30" max="200"><br><br>
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" name="height" required min="100" max="250"><br><br>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required min="15" max="80"><br><br>
+            <button type="button" onclick="calculateBMR()">Calculate BMR</button>
+            <p id="bmr"></p>
+        </form>
+    
+        <form id="form2">
+            <label for="activity">Activity Level:</label>
+            <select id="activity" name="activity">
+                <option value="very-low">Very Low Practice</option>
+                <option value="low">Low Practice (1-3 days/week)</option>
+                <option value="medium">Medium Practice (3-5 days/week)</option>
+                <option value="high">High Practice (6-7 days/week)</option>
+            </select><br><br>
+            <button type="button" onclick="calculateCalories()">Calculate Calories</button>
+            <p id="result"></p> 
+        </form>
+    
+        <form id="form4">
+            <label for="weight">Choose a weight goal:</label>
+            <select id="weight" name="weight">
+                <option value="gain">Gain More Weight</option>
+                <option value="lose">Lose Weight</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+        
+        <img id="thin" src="images\image1.jpeg" style="display:none;" class="center" />
+        <img id="fat" src="images\image2.jpeg"  style="display:none;" class="center" />
+        <script>
+        function calculateBMR() {
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var weight = document.getElementById("weight").value;
+            var height = document.getElementById("height").value;
+            var age = document.getElementById("age").value;
+            var bmr;
+
+            if (gender === "male") {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+
+            document.getElementById("bmr").innerHTML = "Your BMR is: " + bmr.toFixed(2);
+        }
+
+        
+        function calculateCalories() {
+            var activity = document.getElementById("activity").value;
+                    var bmr = document.getElementById("bmr").value;
+                    var calories;
+        
+                    if (activity === "very-low") {
+                        calories = 1.2 * bmr;
+                    } else if (activity === "low") {
+                        calories = 1.375 * bmr;
+                    } else if (activity === "medium") {
+                        calories = 1.55 * bmr;
+                    } else {
+                        calories = 1.725 * bmr;
+                    }
+        
+                    document.getElementById("result").innerHTML = "Your daily calorie intake should be: " + calories.toFixed(2);
+        }
+        
+        $(document).ready(function(){
+            $("#form4").submit(function(e){
+                e.preventDefault(); // Prevent the form from submitting
+                var weight = this.weight.value; // Get the value of the weight field
+        
+                // Validate the weight field
+                if (weight == "gain") {
+                    $("#fat").show();
+                    $("#thin").hide();
+                } else if (weight == "lose") {
+                    $("#thin").show();
+                    $("#fat").hide();
+                }
+            });
+        });
+        </script>
+        </section>
+        
+        <!-- Services End -->
+
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer bg-dark wow fadeIn" data-wow-delay=".3s">
+            <div class="container pt-5 pb-4">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <a href="index.html">
+                            <h1 class="text-white fw-bold d-block">Power Gym</span> </h1>
+                        </a>
+                        <p class="mt-4 text-light">Empower your health journey with our sports web page! 🏋️‍♂️ Created by computer and information students, along with expert gym captains and physical therapists, we cater to young enthusiasts, aid injury recovery, and enhance fitness for the elderly. Simplified nutrition systems included! 💻🌐 #FitnessRevolution #StudentInitiative #HealthJourney</p>
+                     <!--   <div class="d-flex hightech-link">
+                            <a href="" class="btn-light nav-fill btn btn-square rounded-circle me-2"><i class="fab fa-facebook-f text-primary"></i></a>
+                            <a href="" class="btn-light nav-fill btn btn-square rounded-circle me-2"><i class="fab fa-twitter text-primary"></i></a>
+                            <a href="" class="btn-light nav-fill btn btn-square rounded-circle me-2"><i class="fab fa-instagram text-primary"></i></a>
+                            <a href="" class="btn-light nav-fill btn btn-square rounded-circle me-0"><i class="fab fa-linkedin-in text-primary"></i></a>
+                        </div>-->
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <a href="#" class="h3 text-secondary">Short Link</a>
+                        <div class="mt-4 d-flex flex-column short-link">
+                            <!--<a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>About us</a>-->
+                            <a href="index.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Home</a>
+                            <a href="contact.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Contact us</a>
+                            <a href="service.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Our Services</a>   
+                            <!--<a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Latest Blog</a>-->
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <a href="#" class="h3 text-secondary">Help Link</a>
+                        <div class="mt-4 d-flex flex-column help-link">
+                            <a href="service.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>CROSSFIT TRAINING</a>
+                            <a href="service.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Diet</a>
+                            <a href="service.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>DYNAMIC STRENGTH TRAINING</a>
+                            <a href="service.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Yoga</a>
+                            <a href="service.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Recovery exercises</a>
+                            <a href="service.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Flexibility exercises</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <a href="#" class="h3 text-secondary">Contact Us</a>
+                        <div class="text-white mt-4 d-flex flex-column contact-link">
+                            <a href="https://www.google.com/maps/@30.5803762,31.5205498,15z?entry=ttu" class="pb-3 text-light border-bottom border-primary"><i class="fas fa-map-marker-alt text-secondary me-2"></i> zagazig </a>
+                            <a href="https://web.telegram.org/a/#6465267431"  class="py-3 text-light border-bottom border-primary"><i class="fas fa-phone-alt text-secondary me-2"></i>Power Gym</a>
+                            <a href="" class="py-3 text-light border-bottom border-primary"><i class="fas fa-envelope text-secondary me-2"></i> Power_Gym@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="text-light mt-5 mb-4">
+                <p>&copy; Graduates of Zagazig University students 2024</p>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-secondary btn-square rounded-circle back-to-top"><i class="fa fa-arrow-up text-white"></i></a>
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+        <script>
+          function showDropdown() {
+              var dropdown = document.getElementById("levelDropdown");
+              dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+          }
+      
+          // Close the dropdown if the user clicks outside of it
+          window.onclick = function(event) {
+              if (!event.target.matches('.image-container img')) {
+                  var dropdown = document.getElementById("levelDropdown");
+                  if (dropdown.style.display === "block") {
+                      dropdown.style.display = "none";
+                  }
+              }
+          }
+      </script>
+    </body>
+
+
+</html>

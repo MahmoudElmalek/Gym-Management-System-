@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    
+        <style>
+            main{
+               
+                background-image: url("img/pexels-li-sun-2294361.jpg");
+                 background-size: cover;
+                 flex-grow: 1;
+            }
+        </style>
+
+   
+
+  
+    <link rel="stylesheet" href="css/style0.css">
+
+
+    <title>Calorie and Body Weight Calculator</title>
+</head>
+<body>
+   <header>
+    <!-- <div class="navbar">
+        <div class="logo"><a href="#">Energy 360</a></div>
+        <div class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+            <li class="login_nav"><a href="#">Login</a></li>
+        </div> -->
+        <div class="icon-bar" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+    </header>
+   <main>
+
+    <div class="calculate_caloirs">
+    <h1>Calorie and Body Weight Calculator</h1>
+    <label for="gender"><h2>Gender:</h2></label>
+    <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+
+    <label for="weight"><h2>Weight (kg):</h2></label>
+    <input type="number" id="weight" required>
+
+    <label for="height"><h2>Height (cm):</h2></label>
+    <input type="number" id="height" required>
+
+    <label for="age"><h2>Age:</h2></label>
+    <input type="number" id="age" required>
+
+    <label for="activity"><h2>Activity Level:</h2></label>
+    <select id="activity">
+        <option value="1.2">Sedentary (little or no activity)</option>
+        <option value="1.375">Light activity (1-3 days a week)</option>
+        <option value="1.55">Moderately active (3-5 days a week)</option>
+        <option value="1.725">Highly active (6-7 days a week)</option>
+        <option value="1.9">Ultra active (very hard exercises/sport)</option>
+    </select>
+    <div>
+    <button id="calculate">Calculate</button>
+    </div>
+    <div>
+      <button id="return">Return Back</button>
+    </div>
+
+    <div id="result"></div>
+    </div>
+
+ 
+    </main> 
+   
+     <!-- Footer Start -->
+     <footer class="example-3">
+        <div class="container main-content-area">
+          <div class="holder">
+            <h3>Energy 360</h3>
+            <p>Empower your health journey with our sports web page! 🏋️‍♂️ Created by computer and information students, along with expert gym captains and physical therapists, we cater to young enthusiasts, aid injury recovery, and enhance fitness for the elderly. Simplified nutrition systems included! 💻🌐 #FitnessRevolution #StudentInitiative #HealthJourney</p>
+          </div>
+          <div class="holder">
+            <h3>Short Link</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="holder">
+            <h3>Services</h3>
+            <ul>
+              <li><a href="#">CROSSFIT TRAINING</a></li>
+              <li><a href="#">Diet</a></li>
+              <li><a href="#">DYNAMIC STRENGTH TRAINING</a></li>
+              <li><a href="#">Yoga</a></li>
+              <li><a href="#">Recovery exercises</a></li>
+              <li><a href="#">Flexibility exercises</a></li>
+              
+            </ul>
+          </div><!-- .holder -->
+          <div class="holder">
+            <h3>Contact Us</h3>
+            <ul>
+              <li><a href="#">email</a></li>
+              <li><a href="#"></a>telegram bot </li>
+              <li><a href="#">loctation</a></li>
+            </ul>
+          </div><!-- .holder -->
+        </div><!-- .container -->
+        </div><!-- .container social-media-links -->
+        <div class="copyright">
+            <hr>
+          <p>Copyright © Graduates of Zagazig University students 2024</p>
+        </div><!-- .copyright -->
+      </footer>
+    <!-- Footer End -->
+        
+       
+    <script src="js/main0.js"></script>      
+        
+        
+
+</body>
+</html>
